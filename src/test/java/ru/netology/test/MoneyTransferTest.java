@@ -1,7 +1,6 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Configuration;
-import lombok.val;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
