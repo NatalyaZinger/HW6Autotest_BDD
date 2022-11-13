@@ -92,7 +92,7 @@ class MoneyTransferTest {
         var secondCardBalance = dashboardPage.getSecondCardBalance();
         dashboardPage.transferButtonSecondToFirst();
         var transferPage = new TransferPage();
-        transferPage.transferData(value + secondCardBalance, cardNumber);
+        transferPage.transferData(value, cardNumber);
         transferPage.getNotification();
     }
 }
