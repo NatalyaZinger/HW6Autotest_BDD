@@ -26,7 +26,7 @@ class MoneyTransferTest {
     }
 
     @Test
-    void TransferFirstToSecond() {
+    void transferFirstToSecond() {
         int value = 3000;
         String cardNumber = String.valueOf(DataHelper.getFirstCardNumber());
         var dashboardPage = new DashboardPage();
@@ -42,7 +42,7 @@ class MoneyTransferTest {
     }
 
     @Test
-    void TransferSecondToFirst() {
+    void transferSecondToFirst() {
         int value = 7000;
         String cardNumber = String.valueOf(DataHelper.getSecondCardNumber());
         var dashboardPage = new DashboardPage();
@@ -66,8 +66,10 @@ class MoneyTransferTest {
         dashboardPage.transferButtonFirstToSecond();
         var transferPage = new TransferPage();
         transferPage.transferData(firstCardBalance, cardNumber);
-        var finalBalance = dashboardPage.getFirstCardBalance() + dashboardPage.getSecondCardBalance();
-        Assertions.assertEquals(firstCardBalance + secondCardBalance, finalBalance);
+        var firstCardBalanceAfterTransfer = dashboardPage.getFirstCardBalance();
+        var secondCardBalanceAfterTransfer = dashboardPage.getSecondCardBalance();
+        Assertions.assertEquals(0, firstCardBalanceAfterTransfer);
+        Assertions.assertEquals(secondCardBalance + firstCardBalance, secondCardBalanceAfterTransfer);
     }
 
     @Test
@@ -79,12 +81,14 @@ class MoneyTransferTest {
         dashboardPage.transferButtonSecondToFirst();
         var transferPage = new TransferPage();
         transferPage.transferData(secondCardBalance, cardNumber);
-        var finalBalance = dashboardPage.getFirstCardBalance() + dashboardPage.getSecondCardBalance();
-        Assertions.assertEquals(firstCardBalance + secondCardBalance, finalBalance);
+        var firstCardBalanceAfterTransfer = dashboardPage.getFirstCardBalance();
+        var secondCardBalanceAfterTransfer = dashboardPage.getSecondCardBalance();
+        Assertions.assertEquals(secondCardBalance + firstCardBalance, firstCardBalanceAfterTransfer);
+        Assertions.assertEquals(0, secondCardBalanceAfterTransfer);
     }
 
     @Test
-    void TransferAboveLimit() {
+    void transferAboveLimit() {
         int value = 15000;
         String cardNumber = String.valueOf(DataHelper.getSecondCardNumber());
         var dashboardPage = new DashboardPage();
