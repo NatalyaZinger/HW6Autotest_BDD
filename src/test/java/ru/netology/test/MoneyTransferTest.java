@@ -28,7 +28,7 @@ class MoneyTransferTest {
     @Test
     void transferFirstToSecond() {
         int value = 3000;
-        String cardNumber = String.valueOf(DataHelper.getFirstCardNumber());
+        String cardNumber = DataHelper.getFirstCardNumber().getNumber();
         var dashboardPage = new DashboardPage();
         var firstCardBalance = dashboardPage.getFirstCardBalance();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
@@ -44,8 +44,8 @@ class MoneyTransferTest {
     @Test
     void transferSecondToFirst() {
         int value = 7000;
-        String cardNumber = String.valueOf(DataHelper.getSecondCardNumber());
         var dashboardPage = new DashboardPage();
+        String cardNumber = DataHelper.getSecondCardNumber().getNumber();
         var firstCardBalance = dashboardPage.getFirstCardBalance();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
         dashboardPage.transferButtonSecondToFirst();
@@ -59,7 +59,7 @@ class MoneyTransferTest {
 
     @Test
     void maxValueTransferFirstToSecond() {
-        String cardNumber = String.valueOf(DataHelper.getFirstCardNumber());
+        String cardNumber = DataHelper.getFirstCardNumber().getNumber();
         var dashboardPage = new DashboardPage();
         var firstCardBalance = dashboardPage.getFirstCardBalance();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
@@ -74,7 +74,7 @@ class MoneyTransferTest {
 
     @Test
     void maxValueTransferSecondToFirst() {
-        String cardNumber = String.valueOf(DataHelper.getSecondCardNumber());
+        String cardNumber = DataHelper.getSecondCardNumber().getNumber();
         var dashboardPage = new DashboardPage();
         var firstCardBalance = dashboardPage.getFirstCardBalance();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
@@ -90,7 +90,7 @@ class MoneyTransferTest {
     @Test
     void transferAboveLimit() {
         int value = 15000;
-        String cardNumber = String.valueOf(DataHelper.getSecondCardNumber());
+        String cardNumber = DataHelper.getSecondCardNumber().getNumber();
         var dashboardPage = new DashboardPage();
         var secondCardBalance = dashboardPage.getSecondCardBalance();
         dashboardPage.transferButtonSecondToFirst();
